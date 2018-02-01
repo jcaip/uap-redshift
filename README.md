@@ -1,5 +1,5 @@
 # uap-redshift
-Redshift python library for user agent detection, using uap-python (https://github.com/ua-parser/uap-python).
+Redshift python library for user agent detection, using uap-python (https://github.com/ua-parser/uap-python).hk
 
 ## Installing
 ```sql
