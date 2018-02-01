@@ -11,9 +11,9 @@ CREATE OR REPLACE LIBRARY uap_python LANGUAGE plpythonu
 ## Usage
 ```sql
 -- set up a UDF for what you want extracted from the user_agent
-CREATE OR REPLACE FUNCTION parse_ua(ua VARCHAR(1024), key VARCHAR)
-RETURNS VARCHAR IMMUTABLE AS $$
+CREATE OR REPLACE FUNCTION parse_ua_mobile(ua VARCHAR(1024))
+RETURNS BOOL IMMUTABLE AS $$
   from user_agents import parse 
-  return parse(ua).get(key, None)
+  return parse(ua).is_mobile
 $$ LANGUAGE plpythonu;
 
