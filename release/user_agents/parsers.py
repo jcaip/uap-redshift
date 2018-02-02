@@ -119,7 +119,7 @@ OperatingSystem = namedtuple('OperatingSystem', ['family', 'version', 'version_o
 def parse_operating_system(family, major=None, minor=None, patch=None, patch_minor=None):
     version_obj = parse_version(major, minor, patch)
     version = '.'.join([str(v) for v in version_obj])
-    return OperatingSystem(family, version, version_string)
+    return OperatingSystem(family, version, version_obj)
 
 
 Device = namedtuple('Device', ['family', 'brand', 'model'])
@@ -140,8 +140,8 @@ class UserAgent(object):
 
     def __str__(self):
         device = self.is_pc and "PC" or self.device.family
-        os = ("%s %s" % (self.os.family, self.os.version_string)).strip()
-        browser = ("%s %s" % (self.browser.family, self.browser.version_string)).strip()
+        os = ("%s %s" % (self.os.family, self.os.version)).strip()
+        browser = ("%s %s" % (self.browser.family, self.browser.version)).strip()
         return " / ".join([device, os, browser])
 
     def __unicode__(self):
