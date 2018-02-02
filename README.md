@@ -36,7 +36,7 @@ $$
       it, an exception is raised when a missing attribute is encountered.
 
       """
-      attributes = attr.split(".")
+      attributes = attr.split("_")
       for i in attributes:
           try:
               obj = getattr(obj, i)
