@@ -49,6 +49,12 @@ $$
   return str(multi_getattr(ua_obj, key))
 
 $$ LANGUAGE plpythonu;
-```
 
-select parse_ua(parsed_req_useragent, 'is_mobile') from logs.frontend limit 10;
+CREATE OR REPLACE FUNCTION parse_ua_flag(ua VARCHAR(1024), key VARCHAR)
+RETURNS BOOLEAN IMMUTABLE AS
+$$
+  from user_agents import parse
+  ua_obj = parse(ua)
+  return getattr(ua_obj, key, None)
+$$ LANGUAGE plpythonu;
+```
