@@ -46,7 +46,7 @@ $$
               else:
                   raise
       return obj
-  return str(multi_getattr(ua_obj, key))
+  return multi_getattr(ua_obj, key)
 
 $$ LANGUAGE plpythonu;
 
